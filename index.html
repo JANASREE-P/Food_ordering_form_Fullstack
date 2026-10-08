@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Ordering Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background:lavenderblush;
+        }
+
+        .form {
+            width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background:white;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+        }
+
+        button {
+            background:green;
+            color:white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form">
+
+    <h2>Online Food Ordering</h2>
+
+    <form id="foodForm">
+
+        <label>Name</label>
+        <input type="text" id="name">
+
+        <label>Phone</label>
+        <input type="text" id="phone">
+
+        <label>Food Item</label>
+        <select id="food">
+            <option value="">Select Food</option>
+            <option>Pizza</option>
+            <option>Burger</option>
+            <option>Biryani</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" id="quantity">
+
+        <label>Address</label>
+        <textarea id="address"></textarea>
+
+        <label>Payment</label>
+        <select id="payment">
+            <option value="">Select Payment</option>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
+            <option>Card</option>
+        </select>
+
+        <button type="submit">Submit Order</button>
+        <button type="reset">Reset</button>
+
+    </form>
+
+    <p id="result"></p>
+
+</div>
+
+<script>
+document.getElementById("foodForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let food = document.getElementById("food").value;
+    let quantity = document.getElementById("quantity").value;
+    let address = document.getElementById("address").value;
+    let payment = document.getElementById("payment").value;
+
+    if (name == "" || phone == "" || food == "" ||
+        quantity == "" || address == "" || payment == "") {
+
+        alert("Please fill all fields");
+        return;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Enter valid 10 digit phone number");
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+        "Order submitted successfully!";
+});
+</script>
+
+</body>
+</html>
